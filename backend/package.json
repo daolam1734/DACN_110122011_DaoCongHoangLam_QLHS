@@ -1,0 +1,16 @@
+{
+  "name": "tvu-ho-so-dnn-backend",
+  "version": "0.0.1",
+  "description": "Backend skeleton for tvu-ho-so-dnn",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  }
+}
