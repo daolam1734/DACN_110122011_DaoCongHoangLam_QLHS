@@ -28,3 +28,18 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+# Local envs
+.env
+.env.local
+# Logs and test outputs
+*.log
+backend/src/logs/
+database/backups/
+database/seed/_*
+database/seed/fk*
+database/seed/seed_run_output.txt
+database/seed/*.txt
+# Editor / OS
+.vscode/
+Thumbs.db
+desktop.ini
