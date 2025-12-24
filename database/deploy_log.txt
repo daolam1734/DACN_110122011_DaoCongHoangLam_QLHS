@@ -1,0 +1,31 @@
+Database deployment log
+
+- Database: tvu_hoso_dnn
+- DB user: tvu_user (password used: change_me)
+
+Actions performed:
+1) Created database and user (via create_db.ps1; provided postgres superuser password interactively).
+2) Applied schema: database/schema.sql (PostgreSQL). Some CREATE errors appeared during repeated attempts; final state has tables created.
+3) Granted privileges to tvu_user on tables and sequences.
+
+Verification results (as tvu_user):
+- Tables present: 26 tables listed.
+- Foreign key constraints count: 30
+
+Notes:
+- Tables are owned by 'postgres' (schema objects created under superuser). Privileges were granted to 'tvu_user'.
+- If you prefer objects to be owned by 'tvu_user', run as superuser:
+  - ALTER TABLE public.<table> OWNER TO tvu_user; (or a loop over all tables)
+
+Commands run (high level):
+- .\database\create_db.ps1 -PromptSuperPass
+- psql -h localhost -p 5432 -U postgres -d tvu_hoso_dnn -f database/schema.sql
+- psql -h localhost -p 5432 -U postgres -d tvu_hoso_dnn -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO tvu_user;"
+- psql -h localhost -p 5432 -U postgres -d tvu_hoso_dnn -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO tvu_user;"
+- psql -h localhost -p 5432 -U tvu_user -d tvu_hoso_dnn -c "\dt"
+- psql -h localhost -p 5432 -U tvu_user -d tvu_hoso_dnn -c "SELECT count(*) AS fk_count FROM information_schema.table_constraints WHERE constraint_type='FOREIGN KEY' AND constraint_schema='public';"
+
+If you want, I can:
+- Transfer ownership of all tables to `tvu_user`.
+- Create a small SQL script to set owners and grant permissions.
+- Re-run schema on a clean DB if you want fresh state (I can drop and recreate DB after terminating connections).
