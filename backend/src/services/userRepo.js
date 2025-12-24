@@ -20,4 +20,8 @@ async function getByUsername(username) {
   return users.find(u => u.username === username) || null;
 }
 
-module.exports = { getByUsername, _internal: { users } };
+async function getById(id) {
+  return users.find(u => u.id === id) || null;
+}
+
+module.exports = { getByUsername, getById, _internal: { users } };

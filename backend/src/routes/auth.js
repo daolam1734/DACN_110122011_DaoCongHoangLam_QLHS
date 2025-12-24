@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const userRepo = require('../services/userRepo');
 const logger = require('../services/logger');
+const verifyToken = require('../middleware/auth');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '1h';
@@ -55,3 +56,17 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+// GET /auth/me - return current user info (requires Bearer token)
+router.get('/me', verifyToken, async (req, res) => {
+  try {
+    // prefer full user from repo if available
+    const u = req.userDetails || (req.user && req.user.sub ? await userRepo.getById(req.user.sub) : null);
+    if (!u) return res.status(404).json({ error: 'user_not_found' });
+    const { passwordHash, ...safe } = u;
+    return res.json({ user: safe });
+  } catch (err) {
+    console.error('GET /auth/me error', err);
+    return res.status(500).json({ error: 'internal_error' });
+  }
+});
