@@ -1,0 +1,30 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+/dist
+/build
+
+# PHP (Composer)
+vendor/
+composer.lock
+/.phpunit.result.cache
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+/out/
+/target/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
