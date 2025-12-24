@@ -36,3 +36,21 @@ Security notes
 If you want, I can:
 - Run the SQL from here (requires a reachable Postgres and credentials), or
 - Add a Docker Compose service for Postgres to make local development easier.
+
+Seed data
+---------
+
+Seed files are in `database/seed/`.
+
+To run the seed (recommended to backup DB first):
+
+```powershell
+# Backup (run as postgres superuser)
+pg_dump -h localhost -p 5432 -U postgres -F c -b -v -f database/backups/tvu_hoso_dnn_$(Get-Date -Format yyyyMMdd_HHmmss).bak tvu_hoso_dnn
+
+# Run seed as application user (tvu_user)
+$env:PGPASSWORD = 'change_me'
+psql -h localhost -p 5432 -U tvu_user -d tvu_hoso_dnn -f database/seed/seed.sql
+```
+
+The seed file is idempotent for many inserts but review values before running in production.
