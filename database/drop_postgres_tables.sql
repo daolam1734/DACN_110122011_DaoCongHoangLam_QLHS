@@ -1,0 +1,27 @@
+-- Drop tables accidentally created in 'postgres' database by previous mistaken runs
+DROP TABLE IF EXISTS nhat_ky_he_thong CASCADE;
+DROP TABLE IF EXISTS phe_duyet_dang_vien CASCADE;
+DROP TABLE IF EXISTS chu_ky_so CASCADE;
+DROP TABLE IF EXISTS ho_so_van_ban CASCADE;
+DROP TABLE IF EXISTS van_ban_dien_tu CASCADE;
+DROP TABLE IF EXISTS tep_dinh_kem CASCADE;
+DROP TABLE IF EXISTS cau_hinh_giay_to CASCADE;
+DROP TABLE IF EXISTS loai_giay_to CASCADE;
+DROP TABLE IF EXISTS lich_su_hanh_dong CASCADE;
+DROP TABLE IF EXISTS hanh_dong_nghiep_vu CASCADE;
+DROP TABLE IF EXISTS ho_so_xu_ly CASCADE;
+DROP TABLE IF EXISTS buoc_xu_ly CASCADE;
+DROP TABLE IF EXISTS quy_trinh_xu_ly CASCADE;
+DROP TABLE IF EXISTS vai_tro_xu_ly CASCADE;
+DROP TABLE IF EXISTS ket_qua_chuyen_di CASCADE;
+DROP TABLE IF EXISTS trang_thai_ho_so CASCADE;
+DROP TABLE IF EXISTS ho_so_di_nuoc_ngoai CASCADE;
+DROP TABLE IF EXISTS loai_ho_so CASCADE;
+DROP TABLE IF EXISTS nguoi_dung_vai_tro CASCADE;
+DROP TABLE IF EXISTS vai_tro_he_thong CASCADE;
+DROP TABLE IF EXISTS qua_trinh_cong_tac CASCADE;
+DROP TABLE IF EXISTS nguoi_dung CASCADE;
+DROP TABLE IF EXISTS trang_thai_dang_vien CASCADE;
+DROP TABLE IF EXISTS chuc_vu CASCADE;
+DROP TABLE IF EXISTS don_vi_to_chuc CASCADE;
+DROP TABLE IF EXISTS cap_to_chuc CASCADE;

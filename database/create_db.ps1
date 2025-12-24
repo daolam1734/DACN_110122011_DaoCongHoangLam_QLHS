@@ -26,7 +26,7 @@ if ($PromptSuperPass) {
   $env:PGPASSWORD = $plain
 }
 
-Write-Host "Creating database '$DbName' and user '$DbUser' on $PgHost:$PgPort ..."
+Write-Host "Creating database '$DbName' and user '$DbUser' on ${PgHost}:${PgPort} ..."
 
 # create database
 psql -h $PgHost -p $PgPort -U $PgSuperUser -c "CREATE DATABASE $DbName;"
