@@ -1,0 +1,25 @@
+﻿Seed deploy log - 12/24/2025 16:43:50
+Backup file: database/backups/tvu_hoso_dnn_20251224_164348.bak
+Seed exit code: 0
+--- Seed output (tail 200 lines) ---
+BEGIN
+SET
+INSERT 0 4
+INSERT 0 5
+INSERT 0 2
+INSERT 0 4
+INSERT 0 4
+INSERT 0 6
+INSERT 0 3
+INSERT 0 4
+INSERT 0 6
+COMMIT
+psql : psql:database/seed/_count_queries.sql:1: ERROR:  invalid byte sequence for encoding "UTF8": 0xff
+At line:1 char:1
++ psql -h localhost -p 5432 -U tvu_user -d tvu_hoso_dnn -f $countsFile  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (psql:database/s...ng "UTF8": 0xff:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+--- Errors found ---
+No ERROR lines found in seed output.
